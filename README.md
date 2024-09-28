@@ -26,7 +26,7 @@ This project focuses on building a **Customer Churn Prediction System** using a 
 
 5. **Evaluation**
    - Evaluated models based on recall, precision, and F1 score for the minority class, especially focusing on **recall** to capture more churners.
-   - Achieved **92% accuracy** with **Random Forest and SMOTEENN**, and significantly improved recall for churned customers.
+   - Achieved **94% accuracy** with **Random Forest and SMOTEENN**, and significantly improved recall for churned customers.
 
 6. **Model Saving**
    - Final **Random Forest Classifier** was saved using **Pickle** for future use in APIs or UI integration.
