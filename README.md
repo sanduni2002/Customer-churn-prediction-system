@@ -1,47 +1,51 @@
+Here's the completed and cleaned-up version of your README:
+
+---
+
 # Customer Churn Prediction System - Telco Dataset
 
 ## Project Overview
 
-This project focuses on building a **Customer Churn Prediction System** using a sample Telco customer dataset. The system aims to predict whether a customer will churn (i.e., stop using the company's service) based on various features like contract type, monthly charges, tenure, and more. Given the dataset's imbalanced nature, techniques like **SMOTEENN** (Synthetic Minority Over-sampling Technique combined with Edited Nearest Neighbors) were used to handle class imbalance and improve the model's performance.
+This project focuses on building a **Customer Churn Prediction System** using a Telco customer dataset. The goal is to predict whether a customer will churn (i.e., stop using the service) based on features like contract type, monthly charges, and tenure. Given the dataset's imbalanced nature, **SMOTEENN** (Synthetic Minority Over-sampling Technique combined with Edited Nearest Neighbors) is used to handle class imbalance and enhance model performance.
 
 ## Workflow Summary
 
 1. **Data Preprocessing**
-   - Loaded the Telco dataset and cleaned it by handling missing values and transforming categorical features using **one-hot encoding**.
-   - Checked for data imbalance in the target variable (`Churn`), which showed a 73:27 imbalance between non-churners and churners.
+   - Loaded and cleaned the dataset, handling missing values and transforming categorical variables with **one-hot encoding**.
+   - Detected an imbalance in the target variable (`Churn`), with a 73:27 split between non-churners and churners.
 
 2. **Feature Engineering**
-   - Converted relevant categorical variables into numeric ones.
+   - Converted categorical variables into numeric format.
    - Grouped customers by tenure and removed irrelevant features like `CustomerID`.
 
-3. **Exploratory Data Analysis**
-   - Visualized the relationships between customer features (e.g., **monthly charges**, **tenure**, **total charges**) and churn.
-   - Found insights, such as **higher churn for customers with short tenure, high monthly charges, and no tech support or security services**.
+3. **Exploratory Data Analysis (EDA)**
+   - Visualized relationships between customer features (e.g., monthly charges, tenure) and churn.
+   - Found that **short tenure**, **high monthly charges**, and the absence of **tech support** or **security services** were correlated with churn.
 
 4. **Model Building**
-   - Built multiple models to predict churn:
-     - **Decision Tree Classifier**: Initial model with low performance on an imbalanced dataset.
-     - **Random Forest Classifier**: Improved performance with a depth of 6, leading to better accuracy.
-   - Handled class imbalance using **SMOTEENN** to resample the dataset for better classification of minority classes (churners).
+   - Built several models:
+     - **Decision Tree Classifier**: Baseline model.
+     - **Random Forest Classifier**: Enhanced performance with hyperparameter tuning (max depth = 6).
+   - Used **SMOTEENN** to resample the dataset, addressing the class imbalance for better prediction of churners.
 
-5. **Evaluation**
-   - Evaluated models based on recall, precision, and F1 score for the minority class, especially focusing on **recall** to capture more churners.
-   - Achieved **94% accuracy** with **Random Forest and SMOTEENN**, and significantly improved recall for churned customers.
+5. **Model Evaluation**
+   - Evaluated models using precision, recall, and F1 score, focusing on the **recall** of churned customers.
+   - Achieved **94% accuracy** with **Random Forest + SMOTEENN**, significantly improving the recall for the minority class (churners).
 
 6. **Model Saving**
-   - Final **Random Forest Classifier** was saved using **Pickle** for future use in APIs or UI integration.
+   - Saved the final **Random Forest Classifier** using **Pickle** for future use in APIs or a user interface.
+
+## Front-End Integration
+- The front end is designed using **Streamlit** to create an interactive user interface where customers' data can be input and churn prediction results are displayed.
 
 ## Key Libraries and Tools
-- **Python**: Programming language used for development.
-- **pandas, numpy**: For data manipulation and analysis.
-- **seaborn, matplotlib**: For data visualization.
-- **sklearn**: For model building, evaluation, and metrics.
-- **imblearn**: For handling class imbalance with SMOTEENN.
-- **pickle**: To save and load the trained models.
-
-## Future Scope
-- Deploy the model as an API to integrate with a UI for real-time churn prediction.
-- Test different machine learning models such as **XGBoost** or **Gradient Boosting** for further performance improvements.
+- **Python**
+- **pandas**, **numpy** for data manipulation
+- **seaborn**, **matplotlib** for data visualization
+- **scikit-learn** for machine learning models
+- **imblearn** for handling class imbalance (SMOTEENN)
+- **Streamlit** for the front-end interface
+- **pickle** for saving and loading trained models
 
 ## How to Use
 
@@ -55,16 +59,14 @@ This project focuses on building a **Customer Churn Prediction System** using a 
    pip install -r requirements.txt
    ```
 
-3. **Run the model**:
-   - Load the saved model (`model.sav`) and use it for predictions:
-     ```python
-     import pickle
-     loaded_model = pickle.load(open('model.sav', 'rb'))
-     # Use the loaded model for predictions
-     loaded_model.predict(X_test)
-     ```
+3. **Run the application**:
+   ```bash
+   streamlit run app.py
+   ```
 
-4. **Run the application**:
-   - If integrated with a UI or API, start the server and use the model for real-time predictions.
+4. **Make Predictions**:
+   - Enter customer data through the Streamlit interface and receive churn prediction results.
 
-This project provides a solid foundation for predicting customer churn using machine learning models, ensuring that organizations can proactively engage customers and reduce churn.
+## Future Scope
+- Deploy the model as an API for real-time predictions.
+- Test advanced models like **XGBoost** or **Gradient Boosting** to further improve accuracy.
