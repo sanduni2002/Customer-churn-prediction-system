@@ -1,7 +1,3 @@
-Here's the completed and cleaned-up version of your README:
-
----
-
 # Customer Churn Prediction System - Telco Dataset
 
 ## Project Overview
